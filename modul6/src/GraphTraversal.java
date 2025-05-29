@@ -48,26 +48,56 @@ public class GraphTraversal {
         }
     }
 
+    public void printAdjacencyMatrix() {
+        List<String> vertices = new ArrayList<>(adjList.keySet());
+        Collections.sort(vertices);
+        int size = vertices.size();
+
+        int[][] matrix = new int[size][size];
+
+        for (int i = 0; i < size; i++) {
+            String from = vertices.get(i);
+            for (String to : adjList.get(from)) {
+                int j = vertices.indexOf(to);
+                matrix[i][j] = 1;
+            }
+        }
+
+        System.out.println("Adjacency Matrix:");
+        System.out.print("   ");
+        for (String v : vertices) {
+            System.out.print(v + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < size; i++) {
+            System.out.print(vertices.get(i) + "  ");
+            for (int j = 0; j < size; j++) {
+                System.out.print(matrix[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
         GraphTraversal graph = new GraphTraversal();
 
-        // Tambahkan vertex
-        for (char c = 'A'; c <= 'H'; c++) {
+        // Tambahkan vertex A sampai E
+        for (char c = 'A'; c <= 'E'; c++) {
             graph.addVertex(String.valueOf(c));
         }
 
-        // Tambahkan edge (contoh 10 rute)
+        // Tambahkan edge
         graph.addEdge("A", "B");
         graph.addEdge("A", "C");
         graph.addEdge("B", "D");
         graph.addEdge("C", "D");
         graph.addEdge("C", "E");
-        graph.addEdge("D", "F");
-        graph.addEdge("E", "A");
+        graph.addEdge("D", "E");
 
-
-        // Jalankan traversal
+        // Jalankan traversal dan tampilkan adjacency matrix
         graph.bfs("A");
         graph.dfs("A");
+        graph.printAdjacencyMatrix();
     }
 }
