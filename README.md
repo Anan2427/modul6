@@ -15,6 +15,7 @@ D [0 0 0 0 1]
 E [0 0 0 0 0]
 
 3. Output Traversal
+   
 BFS dari A:
 A → B → C → D → E
 
