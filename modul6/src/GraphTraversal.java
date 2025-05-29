@@ -63,10 +63,8 @@ public class GraphTraversal {
         graph.addEdge("C", "D");
         graph.addEdge("C", "E");
         graph.addEdge("D", "F");
-        graph.addEdge("E", "F");
-        graph.addEdge("F", "G");
-        graph.addEdge("G", "H");
-        graph.addEdge("H", "A");
+        graph.addEdge("E", "A");
+
 
         // Jalankan traversal
         graph.bfs("A");
